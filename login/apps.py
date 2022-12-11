@@ -8,4 +8,8 @@ class LoginConfig(AppConfig):
 class ChatConfig(AppConfig):
     name = 'chat'
 
+class appConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'app'
+
 

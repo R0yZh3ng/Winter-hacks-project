@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <head>
+        <title>
+            Home page
+        </title>
+        <style>
+            ul{
+                margin-top:50px;
+                margin-left: 1000px;
+                margin-right: 20px;
+            }
+            li {
+                display: inline;
+                padding: 10px;
+                font-family: 'Fredoka One', cursive;
+            }
+            a {
+                text-decoration: none;
+                Color: black;
+                
+                
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>Hello, {{request.user}}</li>
+            <li><a href = "/loginPage">Log Out</a></li>
+            <li><a href = "/polls">Polls</a></li>
+            <li><a href = "/chatroom">Rooms</a></li>
+        </ul>
+
+        <h1>Results</h1>
+        
+    </body>
+</html>

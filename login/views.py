@@ -6,7 +6,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
-from .forms import CreateUserForm
+from .forms import CreateUserForm, CreatePollForm
+from .models import app
 
 from django.contrib.auth.decorators import login_required
 
@@ -45,6 +46,22 @@ def loginPage(request):
 def polls(request):
     return render (request, "login/polls.html")
 
+def createP(request):
+    form = CreatePollForm()
+    if request.method == "POST":
+        form = CreatePollForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('polls')
+    else :
+        form = CreatePollForm()
+        context = {'form' : form}
+        
+    return render (request, "polls/create.html", context)
+
+def results(request):
+    return render (request, "polls/results.html")
+
 def chatroom(request):
     return render (request, "login/chatroom.html")
 
@@ -55,10 +72,6 @@ def logOut(request):
     logout(request)
     return redirect('loginPage')
 
-def room(request, room_name):
-	return render(request, 'chatroom.html', {
-		'room_name': room_name
-	})
     
 
 

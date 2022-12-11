@@ -9,7 +9,9 @@ urlpatterns = [
     path('chatroom', views.chatroom, name = "chatroom"),
     path('polls', views.polls, name = "polls"),
     path('logOut', views.logOut, name = "logOut"),
-    path('<str:room_name>/', views.room, name='room'),
+    path('createP', views.createP, name = "createP"),
+    path('results', views.results, name = "results"),
+
     
 
 ]
