@@ -5,3 +5,7 @@ class LoginConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'login'
 
+class ChatConfig(AppConfig):
+    name = 'chat'
+
+
