@@ -65,7 +65,7 @@ body,html {
 		}
             ul{
                 margin-top:50px;
-                margin-left: 1050px;
+                margin-left: 950px;
                 margin-right: 20px;
             }
             li {
@@ -84,12 +84,12 @@ body,html {
     <body>
         <ul>
             <li>Hello, {{request.user}}</li>
+            <li><a href = "/logOut">Home</a></li>
             <li><a href = "/loginPage">Log Out</a></li>
             <li><a href = "/polls">Polls</a></li>
             <li><a href = "/chatroom">Rooms</a></li>
         </ul>
 
-        <h1>create</h1>
         {% csrf_token%}
         <div class="container h-100">
             <div class="d-flex justify-content-center h-100">

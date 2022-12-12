@@ -44,7 +44,9 @@ def loginPage(request):
     return render (request, "login/loginPage.html")
 
 def polls(request):
-    return render (request, "login/polls.html")
+    apps = app.objects.all()
+    context = {'apps' : apps}
+    return render (request, "login/polls.html", context)
 
 def createP(request):
     form = CreatePollForm()
@@ -56,10 +58,15 @@ def createP(request):
     else :
         form = CreatePollForm()
         context = {'form' : form}
-        
+
     return render (request, "polls/create.html", context)
 
-def results(request):
+def vote(request, poll_id):
+    vote = app.objects.get(pk=poll_id)
+    context = {'vote' : app}
+    return render (request, "polls/vote.html", context)
+
+def results(request, poll_id):
     return render (request, "polls/results.html")
 
 def chatroom(request):

@@ -10,7 +10,7 @@
         <style>
             ul{
                 margin-top:50px;
-                margin-left: 1000px;
+                margin-left: 950px;
                 margin-right: 20px;
             }
             li {
@@ -24,18 +24,59 @@
                 
                 
             }
+
+            p{
+                color: Black;
+                background-color: transparent;
+                font-size: 10px;
+                margin: 1px;
+                margin-left: 100px;
+
+            }
+
+            .pull-right {
+                margin-left: 1000px;
+                
+            }
+
+            .top{
+                width: 1200px;
+                height: 50px;
+                font-family: 'Fredoka One', cursive;
+
+            }
+
         </style>
     </head>
     <body>
         <ul>
             <li>Hello, {{request.user}}</li>
+            <li><a href = "/logOut">Home</a></li>
             <li><a href = "/loginPage">Log Out</a></li>
             <li><a href = "/polls">Polls</a></li>
             <li><a href = "/chatroom">Rooms</a></li>
         </ul>
+        
+        <h1 style = "text-align: center; font-family: 'Fredoka One', cursive;">Create and View polls here</h1>
+    <center>
+        <div>
+            <a href = "/createP"><button class = "top">Create Poll</button></a>
+        </div>
+    </center>
 
-        <h1>Create and View polls here</h1>
-        <button><a href = "/createP">Create Poll</a></button>
-        <button><a href = "/results">View results</a></button>
+        {% for app in apps %}
+        <li class = "pollsview">
+            <p>{{ app.question }}
+            <span class=" pull-right">
+                <button><a href = "/vote">Vote</a></button>
+                <button><a href = "/results">Results</a></button>
+                
+            </span>
+        </p>
+        </li>
+        {% endfor %}
+    
+        
+
     </body>
 </html>

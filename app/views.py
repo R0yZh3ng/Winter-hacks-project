@@ -44,26 +44,42 @@ def loginPage(request):
     return render (request, "login/loginPage.html")
 
 def polls(request):
-    return render (request, "login/polls.html")
+    apps = app.objects.all()
+    context = {'apps' : apps}
+    return render (request, "login/polls.html", context)
 
 def createP(request):
-    form = CreatePollForm(request.app)
-    context = {'form' : form}
-    return render (request, "polls/create.html")
+    form = CreatePollForm()
+    if request.method == "POST":
+        form = CreatePollForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('polls')
+    else :
+        form = CreatePollForm()
+        context = {'form' : form}
 
-def results(request):
+    return render (request, "polls/create.html", context)
+
+def vote(request, poll_id):
+    vote = app.objects.get(pk=poll_id)
+    context = {'vote' : app}
+    return render (request, "polls/vote.html", context)
+
+def results(request, poll_id):
     return render (request, "polls/results.html")
 
 def chatroom(request):
     return render (request, "login/chatroom.html")
 
 def logOut(request):
+
     return render (request, "login/logout.html")
 
     logout(request)
     return redirect('loginPage')
 
-
+    
 
 
 
